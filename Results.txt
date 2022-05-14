@@ -1,0 +1,21 @@
+Graph: Karate club
+terminals_list = [1, 10]
+Steiner_tree: [1, 0, 10], Steiner_cost: 12
+Time taken:22.861733198165894s
+
+Graph: Karate club
+terminals_list = [1, 12]
+Steiner_tree: [1, 0, 12], Steiner_cost: 14
+Time taken:17.06518030166626s
+
+Graph: Karate club
+terminals = [ 1, 12, 10]
+Steiner_tree: [1, 0, 10, 12], Steiner_cost: 24
+Time taken:81.65990400314331s
+
+Graph: Karate club
+terminals_list = [1, 12, 10, 5, 20, 17]
+Cycle found
+Cycle found
+Steiner_tree: [1, 0, 5, 10, 12, 17, 2, 32, 20], Steiner_cost: 100
+Time taken:668.6759898662567s

@@ -100,6 +100,7 @@ def compute_quotient_cost(graph,trees,node,weights):
     :return: subset of trees corresponding to quotient, trees not part of the subset and the quotient cost value
     """
     distances = []
+    preprocess_graph(graph, weights)
     for tree in trees:
         path,cost = get_node_tree_distance(graph,tree,node,weights)
         pair = {}
@@ -184,7 +185,7 @@ def merge_node_trees(graph,node,subset,remaining_trees,weights):
     merged_tree = nx.Graph()
     for tree in subset:
         min_path,min_cost = get_node_tree_distance(graph,tree,node,weights)
-        merged_tree.add_path(min_path)
+        nx.add_path(merged_tree, min_path)
         for curr_node in list(tree.nodes):
             merged_tree.add_node(curr_node)
         for curr_edge in list(tree.edges):

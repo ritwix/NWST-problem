@@ -1,0 +1,21 @@
+NWST Results
+
+Graph: Karate club
+terminals_list = [1, 10]
+Steiner_tree: [1, 0, 10], Steiner_cost: 12
+Time taken:0.10626602172851562s
+
+Graph: Karate club
+terminals_list = [1, 12]
+Steiner_tree: [1, 0, 12], Steiner_cost: 14
+Time taken:0.10605716705322266s
+
+Graph: Karate club
+terminals = [ 1, 12, 10]
+Steiner_tree: [1, 0, 12, 10], Steiner_cost: 24
+Time taken:0.10608172416687012s
+
+Graph: Karate club
+terminals_list = [1, 12, 10, 5, 20, 17]
+Steiner_tree: [1, 2, 0, 12, 10, 5, 17, 20, 32], Steiner_cost: 100
+Time taken:0.2098548412322998s

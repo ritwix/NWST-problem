@@ -50,12 +50,12 @@ def approximate_steiner(graph,terminals):
             path = dict()
             path['cost'] = least_cost
             path['path'] = least_cost_path
-            print "Path" + str(path['path'])
+            #print("Path" + str(path['path']))
             all_terminal_paths.append(path)
 
     all_terminal_paths.sort(key=lambda x:x['cost'])
     for t_path in all_terminal_paths:
-        steiner_tree.add_path(t_path['path'])
+        nx.add_path(steiner_tree, t_path['path'])
         if check_terminals_connected(steiner_tree,terminals):
             break
     conn_components = list(comp.connected_components(steiner_tree))
@@ -68,7 +68,7 @@ def approximate_steiner(graph,terminals):
                     steiner_tree.add_edge(comp1[j],comp2[k])
                     break
         conn_components = list(comp.connected_components(steiner_tree))
-        
+
     while True:
         try:
             cycle = nx.find_cycle(steiner_tree)
