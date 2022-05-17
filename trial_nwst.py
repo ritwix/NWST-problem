@@ -39,9 +39,38 @@ def get_karate_club_graph():
     graph.nodes[0]['weight'] = 1
     return graph
 
-terminals_list = [1, 12, 10, 5, 20, 17]
-graph = get_karate_club_graph()
+def get_arbitrary_graph():
+    graph = nx.Graph()
+    graph.add_nodes_from(range(10))
+    edge_list = [(0,1),(1,2),(2,3),(3,4), (1,3), (1,5), (7,3), (1,6), (6,7), (5,8), (8,6),(6,9)]
+    graph.add_edges_from(edge_list)
+    node_weights = {
+        0: 10,
+        1: 10,
+        2: 10,
+        3: 10,
+        4: 10,
+        5: 11,
+        6: 10,
+        7: 1,
+        8: 10,
+        9: 10, 
+    }
+    nx.set_node_attributes(graph, node_weights, 'weight')
+    return graph
+
+
+terminals_list = [0, 4, 8]
+graph = get_arbitrary_graph()
 start = time.time()
-steiner_tree, steiner_cost = approximate_steiner(graph, terminals_list, list(nx.get_node_attributes(graph, 'weight').values()))
+node_weights = list(nx.get_node_attributes(graph, 'weight').values())
+#print('node_weights', node_weights)
+steiner_tree, steiner_cost = approximate_steiner(graph, terminals_list, node_weights)
 end = time.time()
-print(f'Steiner_tree: {steiner_tree.nodes}, Steiner_cost: {steiner_cost}\nTime taken:{end-start}s')
+print(f'Steiner_tree: {steiner_tree.edges}, Steiner_cost: {steiner_cost}\nTime taken:{end-start}s')
+
+# steiner_cost = 0
+# for idx in list(steiner_tree.nodes):
+#     #print('Steiner cost variable:',steiner_cost)
+#     steiner_cost += node_weights[idx]
+# print(f'Steiner tree cost: {steiner_cost}')
